@@ -29,13 +29,23 @@ _Group members: Emrecan Ulu, Flora Hirche
 
 ## Introduction
 
-Start off by setting the stage for your project. Give a brief overview of relevant studies or work that have tackled similar issues. Then, clearly describe the main question or problem your project is designed to solve.
+- set the stage
+- relevant studies or work that have tackled similar issues
+- main question or problem
+
+Differentiating between the literal and the intended meaning of a text computationally remains a challenging task. 
+...
+The goal of this project was to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm and explore the topics that the sarcastic comments focus on. 
 
 ## Dataset
 
-Provide a short description of the dataset used in your project. Focus on highlighting the aspects that are particularly relevant to your work.
+- short description of the datasets used in your project (highlight aspects that are particularly relevant to your work)
+We used xxx as the training dataset for fine-tuning the sarcasm detector. It contains a balanced number of labeled sarcastic and non-sarcastic comments. ...
+We used the xxx dataset to detect sarcastic comments in it and analyze them further. It contains ...
 
 ## Methods
+
+We used the RoBERTa (Sequence Classifier) as the base model to fine-tune on sarcasm detection. In order to evaluate its performance in detecting sarcasm, we compared the fine-tuned model to a linear regression model that was trained on the same data and on the same task. We applied TF-IDF vectorization to find the most characteristic words that were used in the sarcastic comments compared to the non-sarcastic ones. In the linguistic analysis, we applied sentiment analysis to obtain the sentiment incongruity score for sarcastic and non-sarcastic comments and determined the punctuation density by xxx. For the topic modeling within the sarcastic comments, we used xxx to extract the sentence embeddings and determine their similarity, then we applied HDBSCAN clustering.
 
 ### Setup 
 
@@ -71,7 +81,6 @@ Summarize the major outcomes of your project, reflect on the research findings, 
 |--------------|-----------------------------------------------------------|
 | Emrecan Ulu  | topic modeling, ...                                       |
 | Flora Hirche | preprocessing, model fine-tuning, evaluation              |
-| ...          | ...                                                       |
 
 ## References
 
