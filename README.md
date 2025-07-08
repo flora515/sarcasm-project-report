@@ -45,7 +45,7 @@ We used the xxx dataset to detect sarcastic comments in it and analyze them furt
 
 ## Methods
 
-We used the RoBERTa (Sequence Classifier) as the base model to fine-tune on sarcasm detection. In order to evaluate its performance in detecting sarcasm, we compared the fine-tuned model to a linear regression model that was trained on the same data and on the same task. We applied TF-IDF vectorization to find the most characteristic words that were used in the sarcastic comments compared to the non-sarcastic ones. In the linguistic analysis, we applied sentiment analysis to obtain the sentiment incongruity score for sarcastic and non-sarcastic comments and determined the punctuation density by xxx. For the topic modeling within the sarcastic comments, we used xxx to extract the sentence embeddings and determine their similarity, then we applied HDBSCAN clustering.
+We fine-tuned RoBERTa (Sequence Classifier) on sarcasm detection, using our labeled training dataset. In order to evaluate its performance in detecting sarcasm, we compared the fine-tuned model to a linear regression model that was trained on the same data and on the same task. We applied TF-IDF vectorization to find the most characteristic words that were used in the sarcastic comments compared to the non-sarcastic ones. In the linguistic analysis, we applied sentiment analysis to obtain the sentiment incongruity score for sarcastic and non-sarcastic comments and determined the punctuation density by xxx. For the topic modeling within the sarcastic comments, we used xxx to extract the sentence embeddings and determine their similarity, then we applied HDBSCAN clustering.
 
 ### Setup 
 
