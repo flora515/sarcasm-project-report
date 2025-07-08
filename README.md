@@ -66,7 +66,27 @@ pip install -r requirements.txt
 
 ### Experiments
 
-Report how you conducted the experiments. We suggest including detailed explanations of the preprocessing steps and model training in your project. For the preprocessing, describe  data cleaning, normalization, or transformation steps you applied to prepare the dataset, along with the reasons for choosing these methods. In the section on model training, explain the methodologies and algorithms you used, detail the parameter settings and training protocols, and describe any measures taken to ensure the validity of the models.
+- how you conducted the experiments: detailed explanations of preprocessing steps and model training
+- preprocessing: describe  data cleaning, normalization, or transformation steps you applied to prepare the dataset, along with the reasons for choosing these methods
+- model training: explain the methodologies and algorithms you used, detail the parameter settings and training protocols, and describe any measures taken to ensure the validity of the models
+
+#### Preprocessing 
+
+##### xxx data (for fine-tuning)
+
+We removed empty comments from the dataframe and tokenized the remaining comments. 
+
+##### Webis-TLDR data
+
+To prepare the data for detecting sarcasm, we transformed it into a dataframe and selected three subreddits out of the top 20 subreddits containing the most comments. To be able to analyze sarcasm in diverse contexts and styles, we chose one subreddit from each category:
+
+1. **humor-oriented** - We chose the subreddit 'r/WTF', in which we expected a high rate of sarcasm, primarily in the context of personal stories. (The bigger subreddit 'r/funny' contained more posts than we were able to process.)
+2. **political/debate-oriented** - We chose 'r/worldnews', in which we expected a high rate of sarcasm, to capture sarcasm on political and controversial topics.
+3. **informational/explanatory** - We chose 'r/explainlikeimfive' as a subreddit in which we expected a diverse range of topics and a lower rate of sarcasm compared to the other selected subreddits.
+
+We cleaned the pre-selected data by removing duplicate comments within the same subreddit, empty comments and columns that we wouldn't need in our analyses (body, normalized body, ...). 
+
+After we labeled the data using the fine-tuned model for sarcasm detection, we did xxx to prepare the data for topic modeling.
 
 ## Results and Discussion
 
