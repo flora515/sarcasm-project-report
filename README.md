@@ -23,9 +23,9 @@ Follow this steps to set up your project report:
 
 ***
 
-# Project Title
+# Beyond the Literal: Unmasking Sarcasm’s Signature on Reddit
 
-_Group members: Name 1, Name 2, Name 3_
+_Group members: Emrecan Ulu, Flora Hirche
 
 ## Introduction
 
@@ -69,8 +69,8 @@ Summarize the major outcomes of your project, reflect on the research findings, 
 
 | Team Member  | Contributions                                             |
 |--------------|-----------------------------------------------------------|
-| Alice Smith  | Data collection, preprocessing, model training, evaluation|                                                       |
-| Bob Johnson  | ...                                                       |
+| Emrecan Ulu  | topic modeling, ...                                       |
+| Flora Hirche | preprocessing, model fine-tuning, evaluation              |
 | ...          | ...                                                       |
 
 ## References
