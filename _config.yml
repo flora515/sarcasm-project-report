@@ -1,5 +1,6 @@
-title: Document Analysis Semester Project
-description: This repository is a GitHub Pages template for Document Analysis course projects. 
+title: Beyond the Literal: Unmasking Sarcasm’s Signature on Reddit
+
+description: Report for Document Ananlysis semester project.  
 show_downloads: True
 plugins:
   - jekyll-relative-links
