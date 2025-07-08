@@ -40,6 +40,7 @@ The goal of this project was to automatically detect sarcasm in our Reddit datas
 ## Dataset
 
 - short description of the datasets used in your project (highlight aspects that are particularly relevant to your work)
+
 We used xxx as the training dataset for fine-tuning the sarcasm detector. It contains a balanced number of labeled sarcastic and non-sarcastic comments. ...
 We used the xxx dataset to detect sarcastic comments in it and analyze them further. It contains ...
 
