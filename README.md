@@ -70,22 +70,20 @@ pip install -r requirements.txt
 - preprocessing: describe  data cleaning, normalization/transformation steps you applied to prepare the dataset, along with the reasons for choosing these methods
 - model training: explain the methodologies and algorithms you used, detail the parameter settings and training protocols, and describe measures taken to ensure the validity of the model
 
-#### Preprocessing 
-
-##### Labeled Sarcasm Data
+#### Preprocessing Labeled Sarcasm Data
 
 In preparation for the fine-tuning, we transformed the CSV file into a Pandas DataFrame and removed empty comments and unnecessary comlumns. We seperated 20% of the data for testing and split the remaining data into training and validation datasets (10% of the 80% were used for validation, the rest for training). Then, we transformed training, validation and test set into the HuggingFace dataset format and tokenized them using the Tokenizer from the pretrained RoBERTa model.
 
-##### Model Fine-Tuning
+#### Model Fine-Tuning Parameters
 
 The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. In our training parameters, we specified a learning rate of 1e-5, 2 epochs
 ...
 - explain choice of parameters
 - measures to ensure validity of the model
 
-##### Webis-TLDR Data
+#### Preprocessing for Sarcasm Detection
 
-To prepare the data for detecting sarcasm, we transformed it into a Pandas DataFrame and selected three subreddits out of the top 20 subreddits containing the most comments. To be able to analyze sarcasm in diverse contexts and styles, we chose one subreddit from each category:
+To prepare the Webis-TLDR-17 dataset for detecting sarcasm, we transformed it into a Pandas DataFrame and selected three subreddits out of the top 20 subreddits containing the most comments. To be able to analyze sarcasm in diverse contexts and styles, we chose one subreddit from each category:
 
 1. **humor-oriented** - We chose the subreddit 'r/WTF', in which we expected a high rate of sarcasm, primarily in the context of personal stories. (The bigger subreddit 'r/funny' contained more posts than we were able to process.)
 2. **political/debate-oriented** - We chose 'r/worldnews', in which we expected a high rate of sarcasm, to capture sarcasm on political and controversial topics.
