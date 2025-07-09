@@ -80,7 +80,7 @@ The pretrained RoBERTa (for sequence classification) model served as our base mo
 - explain choice of parameters
 - measures to ensure validity of the model
 
-As a benchmark for our fine-tuned model's performance, we used the evaluation metrics of a linear regression model that was trained on the same data. This model was trained within the [Open Machine Learning Course] (https://mlcourse.ai/book/index.html) by Yury Kashnitsky and can be found in [this Kaggle notebook](https://www.kaggle.com/code/kashnitsky/a4-demo-sarcasm-detection-with-logit).
+As a benchmark for our fine-tuned model's performance, we used the evaluation metrics of a linear regression model that was trained on the same data. This model was trained within the [Open Machine Learning Course](https://mlcourse.ai/book/index.html) by Yury Kashnitsky and can be found in [this Kaggle notebook](https://www.kaggle.com/code/kashnitsky/a4-demo-sarcasm-detection-with-logit).
 
 #### Preprocessing for Sarcasm Detection
 
