@@ -74,7 +74,7 @@ pip install -r requirements.txt
 
 In preparation for the fine-tuning, we transformed the CSV file into a Pandas DataFrame and removed empty comments and unnecessary comlumns. We seperated 20% of the data for testing and split the remaining data into training and validation datasets (10% of the 80% were used for validation, the rest for training). Then, we transformed training, validation and test set into the HuggingFace dataset format and tokenized them using the Tokenizer from the pretrained RoBERTa model.
 
-#### Model Fine-Tuning Parameters
+#### Model Fine-Tuning
 
 The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. In our training parameters, we specified a learning rate of 1e-5, 2 epochs
 ...
