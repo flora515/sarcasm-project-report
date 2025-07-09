@@ -44,10 +44,9 @@ We detected and analyzed sarcasm in the previously unlabeled [Webis-TLDR-17 data
 
 ## Methods
 
-We fine-tuned RoBERTa (Sequence Classifier) on sarcasm detection, using our labeled training dataset. In order to evaluate its performance, we compared the fine-tuned model to a linear regression model that was trained on the same data and on the same task. We applied TF-IDF vectorization to find the most characteristic words that were used in the sarcastic comments compared to the non-sarcastic ones. In our linguistic analysis, we applied sentiment analysis to obtain the sentiment incongruity score for sarcastic and non-sarcastic comments and determined the punctuation density by xxx. For the topic modeling within the sarcastic comments, we used xxx to extract the sentence embeddings and determine their similarity, then we applied HDBSCAN clustering.
+We fine-tuned the RoBERTa (for sequence classification) on sarcasm detection, using the labeled training dataset. In order to evaluate its performance, we compared the fine-tuned model to a linear regression model that was trained on the same data and on the same task. We applied TF-IDF vectorization to find the most characteristic expressions that were used in the sarcastic comments compared to the non-sarcastic ones. In our linguistic analysis, we determined the sentiment incongruity and punctuation density of sarcastic and non-sarcastic comments. Finally, we applied topic modeling to the comments labeled as sarcastic. 
 
 ### Setup 
-
 
 - Outline the tools, software, and hardware environment, along with configurations used for conducting your experiments
 - Be sure to document the Python version and other dependencies clearly
@@ -81,6 +80,8 @@ The pretrained RoBERTa (for sequence classification) model served as our base mo
 - explain choice of parameters
 - measures to ensure validity of the model
 
+As a benchmark for our fine-tuned model's performance, we used the evaluation metrics of a linear regression model that was trained on the same data. This model was trained within the [Open Machine Learning Course] (https://mlcourse.ai/book/index.html) by Yury Kashnitsky and can be found in [this Kaggle notebook](https://www.kaggle.com/code/kashnitsky/a4-demo-sarcasm-detection-with-logit).
+
 #### Preprocessing for Sarcasm Detection
 
 To prepare the Webis-TLDR-17 dataset for detecting sarcasm, we transformed it into a Pandas DataFrame and selected three subreddits out of the top 20 subreddits containing the most comments. To be able to analyze sarcasm in diverse contexts and styles, we chose one subreddit from each category:
@@ -91,7 +92,13 @@ To prepare the Webis-TLDR-17 dataset for detecting sarcasm, we transformed it in
 
 We cleaned the pre-selected data by removing duplicate comments within the same subreddit, empty comments and columns that we wouldn't need in our analyses (body, normalized body). Then we transformed the cleaned dataframe into the HuggingFace format and tokenized it by applying the RoBERTa tokenizer.
 
-After we labeled the data using the fine-tuned model for sarcasm detection, we did xxx to prepare the data for topic modeling.
+#### Linguistic Analysis
+
+We used TF-IDF vectorization to find characteristic expressions in the comments that were labeled sarcastic in comparison to the non-sarcastic comments. To calculate the sentiment incongruity of sarcastic and non-sarcastic comments, we obtained polarity scores by applying the Vader Sentiment Analyzer and multiplying the positive with the negative score for each comment. We calculated the punctuation density by normalizing the sum of punctuation characters ('!', '?', '""') in each comment by its word count.
+
+#### Topic Modeling
+
+Before topic modeling, we filtered the dataset to include only the comments that were labeled as sarcastic. We reduced this dataframe to the "comment" column and removed stopwords from it. Then, we used BERTopic to perform the text embedding, dimensionality reduction (using UMAP) and clustering with HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise).
 
 ## Results and Discussion
 
