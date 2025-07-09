@@ -25,11 +25,10 @@ Follow this steps to set up your project report:
 
 # Beyond the Literal: Unmasking Sarcasm’s Signature on Reddit
 
-_Group members: Emrecan Ulu, Flora Hirche
+_Group members: Emrecan Ulu; Flora Hirche
 
 ## Introduction
 
-- set the stage
 - relevant studies or work that have tackled similar issues
 - main question or problem
 
@@ -39,19 +38,20 @@ The goal of this project was to automatically detect sarcasm in our Reddit datas
 
 ## Dataset
 
-- short description of the datasets used in your project (highlight aspects that are particularly relevant to your work)
+The data we used for fine-tuning a sarcasm detector was gathered by Mikhail Khodak, Nikunj Saunshi and Kiran Vodrahalli for their article ["A Large Self-Annotated Corpus for Sarcasm"](https://arxiv.org/abs/1704.05579). It contains a balanced number of labeled sarcastic and non-sarcastic comments, with a total of 1,010,826 entries. The dataset, specifically the 'train-balanced-sarcasm.csv' file we worked with, can be accessed [here](https://www.kaggle.com/datasets/danofer/sarcasm/data) on Kaggle.
 
-We used xxx as the training dataset for fine-tuning the sarcasm detector. It contains a balanced number of labeled sarcastic and non-sarcastic comments. ...
-We used the xxx dataset to detect sarcastic comments in it and analyze them further. It contains ...
+We detected and analyzed sarcasm in the previously unlabeled [Webis-TLDR-17 dataset](https://huggingface.co/datasets/webis/tldr-17). It contains 3,848,330 preprocessed Reddit posts, including their author, subreddit and self-annotated 'too long; didn't read' (TLDR) summaries.
 
 ## Methods
 
-We fine-tuned RoBERTa (Sequence Classifier) on sarcasm detection, using our labeled training dataset. In order to evaluate its performance in detecting sarcasm, we compared the fine-tuned model to a linear regression model that was trained on the same data and on the same task. We applied TF-IDF vectorization to find the most characteristic words that were used in the sarcastic comments compared to the non-sarcastic ones. In the linguistic analysis, we applied sentiment analysis to obtain the sentiment incongruity score for sarcastic and non-sarcastic comments and determined the punctuation density by xxx. For the topic modeling within the sarcastic comments, we used xxx to extract the sentence embeddings and determine their similarity, then we applied HDBSCAN clustering.
+We fine-tuned RoBERTa (Sequence Classifier) on sarcasm detection, using our labeled training dataset. In order to evaluate its performance, we compared the fine-tuned model to a linear regression model that was trained on the same data and on the same task. We applied TF-IDF vectorization to find the most characteristic words that were used in the sarcastic comments compared to the non-sarcastic ones. In our linguistic analysis, we applied sentiment analysis to obtain the sentiment incongruity score for sarcastic and non-sarcastic comments and determined the punctuation density by xxx. For the topic modeling within the sarcastic comments, we used xxx to extract the sentence embeddings and determine their similarity, then we applied HDBSCAN clustering.
 
 ### Setup 
 
 
-Outline the tools, software, and hardware environment, along with configurations used for conducting your experiments. Be sure to document the Python version and other dependencies clearly. Provide step-by-step instructions on how to recreate your environment, ensuring anyone can replicate your setup with ease:
+- Outline the tools, software, and hardware environment, along with configurations used for conducting your experiments
+- Be sure to document the Python version and other dependencies clearly
+- Provide step-by-step instructions on how to recreate your environment, ensuring anyone can replicate your setup with ease:
 
 ```bash
 conda create --name myenv python=<version>
@@ -67,34 +67,44 @@ pip install -r requirements.txt
 ### Experiments
 
 - how you conducted the experiments: detailed explanations of preprocessing steps and model training
-- preprocessing: describe  data cleaning, normalization, or transformation steps you applied to prepare the dataset, along with the reasons for choosing these methods
-- model training: explain the methodologies and algorithms you used, detail the parameter settings and training protocols, and describe any measures taken to ensure the validity of the models
+- preprocessing: describe  data cleaning, normalization/transformation steps you applied to prepare the dataset, along with the reasons for choosing these methods
+- model training: explain the methodologies and algorithms you used, detail the parameter settings and training protocols, and describe measures taken to ensure the validity of the model
 
 #### Preprocessing 
 
-##### xxx data (for fine-tuning)
+##### Labeled Sarcasm Data
 
-We removed empty comments from the dataframe and tokenized the remaining comments. 
+In preparation for the fine-tuning, we transformed the CSV file into a Pandas DataFrame and removed empty comments and unnecessary comlumns. We seperated 20% of the data for testing and split the remaining data into training and validation datasets (10% of the 80% were used for validation, the rest for training). Then, we transformed training, validation and test set into the HuggingFace dataset format and tokenized them using the Tokenizer from the pretrained RoBERTa model.
 
-##### Webis-TLDR data
+##### Model Fine-Tuning
 
-To prepare the data for detecting sarcasm, we transformed it into a dataframe and selected three subreddits out of the top 20 subreddits containing the most comments. To be able to analyze sarcasm in diverse contexts and styles, we chose one subreddit from each category:
+The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. In our training parameters, we specified a learning rate of 1e-5, 2 epochs
+...
+- explain choice of parameters
+- measures to ensure validity of the model
+
+##### Webis-TLDR Data
+
+To prepare the data for detecting sarcasm, we transformed it into a Pandas DataFrame and selected three subreddits out of the top 20 subreddits containing the most comments. To be able to analyze sarcasm in diverse contexts and styles, we chose one subreddit from each category:
 
 1. **humor-oriented** - We chose the subreddit 'r/WTF', in which we expected a high rate of sarcasm, primarily in the context of personal stories. (The bigger subreddit 'r/funny' contained more posts than we were able to process.)
 2. **political/debate-oriented** - We chose 'r/worldnews', in which we expected a high rate of sarcasm, to capture sarcasm on political and controversial topics.
 3. **informational/explanatory** - We chose 'r/explainlikeimfive' as a subreddit in which we expected a diverse range of topics and a lower rate of sarcasm compared to the other selected subreddits.
 
-We cleaned the pre-selected data by removing duplicate comments within the same subreddit, empty comments and columns that we wouldn't need in our analyses (body, normalized body, ...). 
+We cleaned the pre-selected data by removing duplicate comments within the same subreddit, empty comments and columns that we wouldn't need in our analyses (body, normalized body). Then we transformed the cleaned dataframe into the HuggingFace format and tokenized it by applying the RoBERTa tokenizer.
 
-After we labeled the data using the fine-tuned model for sarcasm detection, we did xxx to prepare the data for topic modeling.
+After labeling the data using the fine-tuned model for sarcasm detection, we did xxx to prepare the data for topic modeling.
 
 ## Results and Discussion
 
-Present the findings from your experiments, supported by visual or statistical evidence. Discuss how these results address your main research question.
+- Present the findings from your experiments, supported by visual or statistical evidence
+- Discuss how these results address your main research question.
 
 ## Conclusion
 
-Summarize the major outcomes of your project, reflect on the research findings, and clearly state the conclusions you've drawn from the study.
+- Summarize the major outcomes of your project
+- reflect on the research findings
+- clearly state the conclusions you've drawn from the study.
 
 ## Contributions
 
@@ -105,5 +115,6 @@ Summarize the major outcomes of your project, reflect on the research findings, 
 
 ## References
 
-Include a list of academic and professional sources you cited in your report, using an appropriate citation format to ensure clarity and proper attribution.
+- list of academic and professional sources you cited
+- use an appropriate citation format to ensure clarity and proper attribution
 
