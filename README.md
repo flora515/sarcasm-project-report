@@ -76,7 +76,7 @@ In preparation for the fine-tuning, we transformed the CSV file into a Pandas Da
 
 #### Model Fine-Tuning
 
-The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. In our training parameters, we specified a learning rate of 1e-5, 2 epochs
+The pretrained RoBERTa (for sequence classification) model served as our base model for fine-tuning it on sarcasm detection. In our training parameters, we specified a learning rate of 1e-5, 2 epochs
 ...
 - explain choice of parameters
 - measures to ensure validity of the model
@@ -91,7 +91,7 @@ To prepare the Webis-TLDR-17 dataset for detecting sarcasm, we transformed it in
 
 We cleaned the pre-selected data by removing duplicate comments within the same subreddit, empty comments and columns that we wouldn't need in our analyses (body, normalized body). Then we transformed the cleaned dataframe into the HuggingFace format and tokenized it by applying the RoBERTa tokenizer.
 
-After labeling the data using the fine-tuned model for sarcasm detection, we did xxx to prepare the data for topic modeling.
+After we labeled the data using the fine-tuned model for sarcasm detection, we did xxx to prepare the data for topic modeling.
 
 ## Results and Discussion
 
@@ -108,8 +108,8 @@ After labeling the data using the fine-tuned model for sarcasm detection, we did
 
 | Team Member  | Contributions                                             |
 |--------------|-----------------------------------------------------------|
-| Emrecan Ulu  | topic modeling, ...                                       |
-| Flora Hirche | preprocessing, model fine-tuning, evaluation              |
+| Emrecan Ulu  | topic modeling, dashboard?                                |
+| Flora Hirche | preprocessing, model fine-tuning, model evaluation        |
 
 ## References
 
