@@ -1,21 +1,5 @@
 
-## Project Report Template
-
-> This repository serves as a template for your project reports as part of the Document Analysis lecture. To set up your project report as a webpage using GitHub Pages, simply follow the steps outlined in the next chapter.
->
->**Some Organizational Details:** Get creative with your project ideas! Just make sure they relate to Natural Language Processing and incorporate this specified dataset: [Link to data](https://huggingface.co/datasets/webis/tldr-17), [Link to paper](https://aclanthology.org/W17-4508.pdf). Submissions should be made in teams of 2-3 students. Each team is expected to create a blog-style project website, using GitHub Pages, to present their findings. Additionally, teams will deliver a lightning talk during the final lecture to discuss their project. Add all your code, such as Python scripts and Jupyter notebooks, to the `code` folder. Use markdown files for your project report. [Here](https://docs.gitlab.com/ee/user/markdown.html) you can read about how to format Markdown documents. 
->
->Have fun working on your project!! 🥳
-
-## Setup The Report Template
-
-Follow this steps to set up your project report:
-
-1. **Fork the Repository:** Begin by creating a copy of this repository for your own use. Click the `Fork` button at the top right corner of this page to do this.
-
-2. **Configure GitHub Pages:** Navigate to `Settings` -> `Pages` in your newly forked repository. Under the `Branch` section, change from `None` to `master` and then click `Save`.
-
-3. **Customize Configuration:** Modify the `_config.yml` file within your repository to personalize your site. Update the `title:` to reflect the title of your project and adjust the `description:` to provide a brief summary.
+Use markdown files for your project report. [Here](https://docs.gitlab.com/ee/user/markdown.html) you can read about how to format Markdown documents. 
 
 4. **Start Writing:** Start writing your report by modifying the `README.md`. You can also add new Markdown files for additional pages by modifying the `_config.yml` file. Use the standard [GitHub Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) for formatting. 
 
@@ -25,22 +9,22 @@ Follow this steps to set up your project report:
 
 # Beyond the Literal: Unmasking Sarcasm’s Signature on Reddit
 
-_Group members: Emrecan Ulu; Flora Hirche
+Group members: Emrecan Ulu; Flora Hirche
 
 ## Introduction
 
 - relevant studies or work that have tackled similar issues
 - main question or problem
 
-Differentiating between the literal and the intended meaning of a text computationally remains a challenging task. 
+Differentiating between the literal and the intended meaning of a text computationally remains a challenging task. This is called the word sense Disambiguation (WSD) problem (Chen et al., 2024).
 ...
 The goal of this project was to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm and explore the topics that the sarcastic comments focus on. 
 
 ## Dataset
 
-For fine-tuning a sarcasm detector, we used data that was gathered by Mikhail Khodak, Nikunj Saunshi and Kiran Vodrahalli for their article ["A Large Self-Annotated Corpus for Sarcasm"](https://arxiv.org/abs/1704.05579). It contains a balanced number of labeled sarcastic and non-sarcastic comments, with a total of 1,010,826 entries. The dataset, specifically the 'train-balanced-sarcasm.csv' file we worked with, can be accessed [here](https://www.kaggle.com/datasets/danofer/sarcasm/data) on Kaggle.
+For fine-tuning a sarcasm detector, we used data that was gathered by Khodak et al. (2017) for their paper ["A Large Self-Annotated Corpus for Sarcasm"](https://arxiv.org/abs/1704.05579). It contains a balanced number of labeled sarcastic and non-sarcastic comments, containing a total of 1,010,826 entries. The labels were retrieved from Reddit users annotating their sarcastic comments with "/s". The dataset, specifically the 'train-balanced-sarcasm.csv' file we worked with, can be accessed [here](https://www.kaggle.com/datasets/danofer/sarcasm/data) on Kaggle.
 
-We detected and analyzed sarcasm in the [Webis-TLDR-17 dataset](https://huggingface.co/datasets/webis/tldr-17). It contains 3,848,330 preprocessed Reddit posts, including their author, subreddit and self-annotated "too long; didn't read" (TLDR) summaries.
+We detected and analyzed sarcasm in the [Webis-TLDR-17 dataset](https://huggingface.co/datasets/webis/tldr-17). It contains 3,848,330 preprocessed Reddit posts, including their author, subreddit and self-annotated "too long; didn't read" (TLDR) summaries. The dataset was created using the authors' "tl;dr" annotations to obtain labels for automatic summarization training. A detailed description can be found in [this paper](https://aclanthology.org/W17-4508.pdf) by Völske et al. (2017).
 
 ## Methods
 
@@ -120,6 +104,6 @@ Before topic modeling, we filtered the dataset to include only the comments that
 
 ## References
 
-- list of academic and professional sources you cited
-- use an appropriate citation format to ensure clarity and proper attribution
+Wangqun Chen, Fuqiang Lin, Guowei Li, Bo Liu, A survey of automatic sarcasm detection: Fundamental theories, formulation, datasets, detection methods, and opportunities. Neurocomputing, Volume 578, 2024, 127428, ISSN 0925-2312, https://doi.org/10.1016/j.neucom.2024.127428.
+
 
