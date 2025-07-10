@@ -16,15 +16,15 @@ Group members: Emrecan Ulu; Flora Hirche
 - relevant studies or work that have tackled similar issues
 - main question or problem
 
-Differentiating between the literal and the intended meaning of a text computationally remains a challenging task. This is called the word sense Disambiguation (WSD) problem (Chen et al., 2024).
-...
+Differentiating between the literal and the intended meaning of a text remains a challenging task in Natural Language Processing. This so-called word sense disambiguation (WSD) problem (Chen et al., 2024) can affect the quality of sentiment analysis by concealing the real attitudes and opinions of the.
+..
 The goal of this project was to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm and explore the topics that the sarcastic comments focus on. 
 
 ## Dataset
 
 For fine-tuning a sarcasm detector, we used data that was gathered by Khodak et al. (2017) for their paper ["A Large Self-Annotated Corpus for Sarcasm"](https://arxiv.org/abs/1704.05579). It contains a balanced number of labeled sarcastic and non-sarcastic comments, containing a total of 1,010,826 entries. The labels were retrieved from Reddit users annotating their sarcastic comments with "/s". The dataset, specifically the 'train-balanced-sarcasm.csv' file we worked with, can be accessed [here](https://www.kaggle.com/datasets/danofer/sarcasm/data) on Kaggle.
 
-We detected and analyzed sarcasm in the [Webis-TLDR-17 dataset](https://huggingface.co/datasets/webis/tldr-17). It contains 3,848,330 preprocessed Reddit posts, including their author, subreddit and self-annotated "too long; didn't read" (TLDR) summaries. The dataset was created using the authors' "tl;dr" annotations to obtain labels for automatic summarization training. A detailed description can be found in [this paper](https://aclanthology.org/W17-4508.pdf) by Völske et al. (2017).
+We detected and analyzed sarcasm in the [Webis-TLDR-17 dataset](https://huggingface.co/datasets/webis/tldr-17). It contains 3,848,330 preprocessed Reddit posts, including their author, subreddit and self-annotated "too long; didn't read" (TLDR) summaries. The dataset was created using the authors' "tl;dr" annotations to obtain labels for automatic summarization training. A more detailed description can be found in [this paper](https://aclanthology.org/W17-4508.pdf) by Völske et al. (2017).
 
 ## Methods
 
@@ -49,7 +49,6 @@ pip install -r requirements.txt
 
 ### Experiments
 
-- how you conducted the experiments: detailed explanations of preprocessing steps and model training
 - preprocessing: describe  data cleaning, normalization/transformation steps you applied to prepare the dataset, along with the reasons for choosing these methods
 - model training: explain the methodologies and algorithms you used, detail the parameter settings and training protocols, and describe measures taken to ensure the validity of the model
 
@@ -78,7 +77,7 @@ We cleaned the pre-selected data by removing duplicate comments within the same 
 
 #### Linguistic Analysis
 
-We used TF-IDF vectorization to find characteristic expressions in the comments that were labeled sarcastic in comparison to the non-sarcastic comments. To calculate the sentiment incongruity of sarcastic and non-sarcastic comments, we obtained polarity scores by applying the Vader Sentiment Analyzer and multiplying the positive with the negative score for each comment. We calculated the punctuation density by normalizing the sum of punctuation characters ('!', '?', '""') in each comment by its word count.
+We used TF-IDF vectorization and 1- and 2-grams to find characteristic expressions in the comments that were labeled sarcastic in comparison to the non-sarcastic comments. To calculate the sentiment incongruity of sarcastic and non-sarcastic comments, we obtained polarity scores by applying the Vader Sentiment Analyzer and multiplying the positive with the negative score for each comment. We calculated the emphatic punctuation density by normalizing the sum of punctuation characters ('!', '?', '""') in each comment by its word count.
 
 #### Topic Modeling
 
@@ -89,21 +88,57 @@ Before topic modeling, we filtered the dataset to include only the comments that
 - Present the findings from your experiments, supported by visual or statistical evidence
 - Discuss how these results address your main research question.
 
+### Sarcasm Detection
+
+- plot: metrics table
+- plot: confusion matrix
+- plots: metrics & confusion matrix of lin reg for comparison
+
+The evaluation of the fine-tuned model suggests that it performs better than a simpler linear regression model, while maintaing a balance between precision and recall. Still, it produces a significant amount of misclassifiations. First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. As shown in figure xxx, we found a higher rate of sarcasm when we classified the TLDRs compared to when we classified the full comments.
+
+- plot: tldr vs full comments
+
+After inspecting the results of both, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified xxx comments as sarcastic and xxx as non-sarcastic.
+
+### Analysis of Sarcasm in Webis-TLDR-17
+
+The expression that were characteristic for the sarcastic compared to the non-sarcastic comments are visualized in figure xxx.
+
+- plot: wordcloud
+
+We found a lower rate of sarcasm in "r/explainlikeimfive" than in "r/worldnews" and in "r/WTF", aligning with the expectations we stated when selecting these subreddits. 
+
+- plot: rates of sarcasm across subreddits
+
+In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. These results indicate that the classification worked well enough to find expected differences in two main characteristics of sarcastic texts.
+
+- plot: barplot sentiment incongruity & punctuation density
+
+The results of the topic modeling are visualized on [this dashboard]. 
+
 ## Conclusion
 
 - Summarize the major outcomes of your project
 - reflect on the research findings
 - clearly state the conclusions you've drawn from the study.
 
+
+
 ## Contributions
 
-| Team Member  | Contributions                                             |
-|--------------|-----------------------------------------------------------|
-| Emrecan Ulu  | topic modeling, dashboard?                                |
-| Flora Hirche | preprocessing, model fine-tuning, model evaluation        |
+| Team Member  | Contributions                                                             |
+|--------------|---------------------------------------------------------------------------|
+| Emrecan Ulu  | topic modeling (code and dashboard)                                       |
+| Flora Hirche | preprocessing, model fine-tuning & evaluation, linguistic analysis        |
 
 ## References
 
-Wangqun Chen, Fuqiang Lin, Guowei Li, Bo Liu, A survey of automatic sarcasm detection: Fundamental theories, formulation, datasets, detection methods, and opportunities. Neurocomputing, Volume 578, 2024, 127428, ISSN 0925-2312, https://doi.org/10.1016/j.neucom.2024.127428.
+Chen, W., Lin, F., Li, G., & Liu, B. (2024). A survey of automatic sarcasm detection: Fundamental theories, formulation, datasets, detection methods, and opportunities. Neurocomputing. https://doi.org/10.1016/j.neucom.2024.127428
+
+Joshi, A., Joshi, A., Bhattacharyya, P., Bhattacharyya, P., Carman, M. J., & Carman, M. J. (2017). Automatic Sarcasm Detection: A Survey. ACM Computing Surveys. https://doi.org/10.1145/3124420
+
+Khodak, M., Khodak, M., Saunshi, N., Saunshi, N., Vodrahalli, K., & Vodrahalli, K. (2017). A Large Self-Annotated Corpus for Sarcasm. arXiv: Computation and Language. https://doi.org/null
+
+Völske, M., Völske, M., Potthast, M., Potthast, M., Syed, S., Syed, S., Stein, B., & Stein, B. (2017). TL;DR: Mining Reddit to Learn Automatic Summarization. NFiS@EMNLP. https://doi.org/10.18653/v1/w17-4508
 
 
