@@ -3,11 +3,11 @@
 Group members: *Emrecan Ulu*; *Flora Hirche*
 
 
-Sarcasm presents a challenging computational task, due to the inherent discrepancy between its literal expression and intended implication, known as the word sense disambiguation (WSD) problem (Chen et al., 2024). The accurate detection of sarcasm is crucial for various Natural Language Processing (NLP) applications, including sentiment analysis, where sarcasm can drastically skew results, as well as opinion mining and broader social media analysis.
+Sarcasm presents a challenging computational task, due to the inherent discrepancy between its literal expression and intended implication, known as the word sense disambiguation (WSD) problem (Chen et al., 2024). The accurate detection of sarcasm is crucial for various Natural Language Processing (NLP) applications, including sentiment analysis, as well as opinion mining and broader understanding of social media discourse.
 
 - granularity/context
 
-**The goal of this project is to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm, and explore the topics that sarcastic comments focus on.**
+Our goal with this project is to develop a robust sarcasm detection model, to identify essential linguistic characteristics of sarcasm, and explore the topics that sarcasm on Reddit tends to focus on.
 
 ## Dataset
 
@@ -100,7 +100,7 @@ Before topic modeling, we filtered the dataset to include only the comments that
 
 You can download and load the fine-tuned RoBERTa model from the Hugging Face Hub: [loahi25/roberta-finetuned-sarc2](https://huggingface.co/loahi25/roberta-finetuned-sarc2)
 
-The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validation set, which demonstrates a robust capability in distinguishing between sarcastic and non-sarcastic Reddit comments. A comparison with the logistic regression results suggests that the fine-tuned model performed better, increasing the accuracy by about 5%, while maintaing a balance between precision and recall. Still, it produces a significant number of misclassifications. The balanced F1-scores across both classes (0.78 for both) suggest that the model performs consistently well for both sarcastic and non-sarcastic comments, without a significant bias towards one class.
+The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validation set, which demonstrates a robust capability in distinguishing between sarcastic and non-sarcastic Reddit comments. Compared to the logistic regression results, the fine-tuned model showed a 6% higher accuracy, while having balanced precision and recall scores. The balanced F1-scores across sarcastic and non-sarcastic comments (0.78 for both) suggest that the model performs consistently well for both classes, without a significant bias towards one class. Despite high performance, both models yield a non-negligible rate of misclassification. This implies a need for more context information like user- or conversation-specific details and potentially multi-modal information like images or other media that the comments are referring to.
 
 
 ![tldr vs full comments](figures/sarc_rate_tldr.png)
@@ -108,6 +108,8 @@ The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validati
 *Sarcasm Detection in Webis-TLDR-17*
 
 As shown by the figure above, we found higher rates of sarcasm when we classified sarcasm in the TLDRs compared to when we classified the full comments. After inspecting and comparing the results, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified 4,783 comments out of 72,619 comments (6.6%) as sarcastic.
+
+The subreddit differences in sarcasm rates confirms that sarcasm is context-sensitive. 
 
 These were characteristic expressions for the sarcastic comments in the dataset:
 
