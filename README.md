@@ -84,15 +84,15 @@ The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validati
 
 ### Sarcasm Detection in Webis-TLDR-17
 
-First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. As shown in figure xxx, we found a higher rate of sarcasm when we classified the TLDRs compared to when we classified the full comments.
+First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. We found higher rates of sarcasm when we classified the TLDRs compared to when we classified the full comments.
 
 ![tldr vs full comments](figures/sarc_rates_tldr_full.png)
 
-After inspecting the results of both, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified xxx comments as sarcastic and xxx as non-sarcastic.
+After inspecting the results of both, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified 4,783 comments out of 72,619 comments (6.6%) as sarcastic.
 
 ### Sarcasm Analysis
 
-The expression that were characteristic for the sarcastic compared to the non-sarcastic comments are visualized in figure xxx.
+The expression that were characteristic for the sarcastic compared to the non-sarcastic comments are visualized in the wordcloud below.
 
 ![wordcloud](figures/cloud_white.png)
 
