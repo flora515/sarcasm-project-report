@@ -6,7 +6,7 @@ Group members: Emrecan Ulu; Flora Hirche
 
 Differentiating between the literal and the intended meaning of a text remains a challenging task in Natural Language Processing. This so-called word sense disambiguation (WSD) problem (Chen et al., 2024) can affect the quality of sentiment analysis by concealing the actual attitudes and opinions of the author. **The goal of this project is to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm, and explore the topics that sarcastic comments focus on.**
 
-Website URL: https://flora515.github.io/sarcasm-project-report/index.html
+[Website URL](https://flora515.github.io/sarcasm-project-report/index.html)
 
 [Open the Topic Modeling Dashboard](plots/index.html)
 
@@ -22,16 +22,12 @@ We fine-tuned the RoBERTa model (for sequence classification) on sarcasm detecti
 
 ### Setup 
 
-- Outline the tools, software, and hardware environment, along with configurations used for conducting your experiments
-- Be sure to document the Python version and other dependencies clearly
-- Provide step-by-step instructions on how to recreate your environment, ensuring anyone can replicate your setup with ease:
-
 ```bash
-conda create --name myenv python=<version>
+conda create --name myenv python=3.10
 conda activate myenv
 ```
 
-Include a `requirements.txt` file in your project repository. This file should list all the Python libraries and their versions needed to run the project. Provide instructions on how to install these dependencies using pip, for example:
+Install CUDA-compatible Torch manually from [PyTorch Website](https://pytorch.org). Find related notebooks and requirements.txt in "code" file.
 
 ```bash
 pip install -r requirements.txt
