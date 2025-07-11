@@ -109,7 +109,7 @@ The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validati
 
 As shown by the figure above, we found higher rates of sarcasm when we classified sarcasm in the TLDRs compared to when we classified the full comments. After inspecting and comparing the results, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified 4,783 comments out of 72,619 comments (6.6%) as sarcastic.
 
-The subreddit differences in sarcasm rates confirms that sarcasm is context-sensitive. 
+In alignment with our expectations, "explainlikeimfive" showed a lower rate of sarcasm than "WTF" and "worldnews". The differences in sarcasm rates across subreddits confirm that sarcasm is context-dependent.
 
 *Sentiment Incongruity and Emphatic Punctuation*
 
