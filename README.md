@@ -50,7 +50,7 @@ In preparation for the fine-tuning, we transformed the CSV file into a Pandas Da
 
 The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. We enabled Mixed-precision training (using 16-bit fp) to reduce memory consumption and speed up the training time. This was crucial for efficiently fine-tuning RoBERTa on the available computational resources. We added a weight decay parameter of 0.01 to reduce the likelihood of overfitting to noise in the training data. We specified a relatively small learning rate of 1e-5 which ensured that the pre-trained weights were adjusted incrementally to adapt to the sarcasm detection task. We found two epochs to be sufficient for convergence without significant overfitting on the validation set.
 
-As a benchmark for our fine-tuned model's performance, we used the evaluation metrics of a linear regression model that was trained on the same data. This model was trained within the [Open Machine Learning Course](https://mlcourse.ai/book/index.html) by Yury Kashnitsky and can be found in [this Kaggle notebook](https://www.kaggle.com/code/kashnitsky/a4-demo-sarcasm-detection-with-logit).
+As a benchmark for our fine-tuned model's performance, we used the evaluation metrics of a logistic regression model that was trained on the same data. This model was trained within the [Open Machine Learning Course](https://mlcourse.ai/book/index.html) by Yury Kashnitsky and can be found in [this Kaggle notebook](https://www.kaggle.com/code/kashnitsky/a4-demo-sarcasm-detection-with-logit).
 
 #### Preprocessing for Sarcasm Detection
 
@@ -72,14 +72,14 @@ Before topic modeling, we filtered the dataset to include only the comments that
 
 ## Results and Discussion
 
-![roberta matrix](figures/roberta_matrix.png)
+![roberta matrix](figures/roberta_cm.png)
 
 <table style="border-collapse: collapse; font-family: sans-serif;">
   <thead>
     <tr style="background-color: #f0f0f0;">
       <th colspan="4">Fine-tuned RoBERTa</th>
       <th style="border-left: 5px solid black;"></th>
-      <th colspan="4">Linear Regression</th>
+      <th colspan="4">Logistic Regression</th>
     </tr>
     <tr>
       <th>Class</th><th>Precision</th><th>Recall</th><th>F1-Score</th>
@@ -107,7 +107,7 @@ Before topic modeling, we filtered the dataset to include only the comments that
 </table>
 
 
-The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validation set, which demonstrates a robust capability in distinguishing between sarcastic and non-sarcastic Reddit comments. A comparison with the linear regression results suggests that the fine-tuned model performed better, increasing the accuracy by about 5%, while maintaing a balance between precision and recall. Still, it produces a significant number of misclassifications. The balanced F1-scores across both classes (0.78 for both) suggest that the model performs consistently well for both sarcastic and non-sarcastic comments, without a significant bias towards one class.
+The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validation set, which demonstrates a robust capability in distinguishing between sarcastic and non-sarcastic Reddit comments. A comparison with the logistic regression results suggests that the fine-tuned model performed better, increasing the accuracy by about 5%, while maintaing a balance between precision and recall. Still, it produces a significant number of misclassifications. The balanced F1-scores across both classes (0.78 for both) suggest that the model performs consistently well for both sarcastic and non-sarcastic comments, without a significant bias towards one class.
 
 
 
