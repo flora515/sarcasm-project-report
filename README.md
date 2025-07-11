@@ -77,7 +77,7 @@ Before topic modeling, we filtered the dataset to include only the comments that
 ### Sarcasm Detection
 
 - plot: metrics table
-![figures/tuned_roberta_matrix.png)
+![matrix](figures/tuned_roberta_matrix.png)
 - plots: metrics & confusion matrix of lin reg for comparison
 
 The evaluation of the fine-tuned model suggests that it performs better than a simpler linear regression model, while maintaing a balance between precision and recall. Still, it produces a significant amount of misclassifiations. First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. As shown in figure xxx, we found a higher rate of sarcasm when we classified the TLDRs compared to when we classified the full comments.
@@ -90,7 +90,7 @@ After inspecting the results of both, we suspected an overclassification of sarc
 
 The expression that were characteristic for the sarcastic compared to the non-sarcastic comments are visualized in figure xxx.
 
-![wordcloud]()
+![wordcloud](figures/cloud_white.png)
 
 We found a lower rate of sarcasm in "r/explainlikeimfive" than in "r/worldnews" and in "r/WTF", aligning with the expectations we stated when selecting these subreddits. 
 
