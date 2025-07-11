@@ -1,8 +1,8 @@
 # Beyond the Literal: Unmasking Sarcasm’s Signature on Reddit
 
-Group members: Emrecan Ulu; Flora Hirche
+Group members: *Emrecan Ulu*; *Flora Hirche*
 
-## Introduction
+##
 
 Sarcasm presents a challenging computational task, due to the inherent discrepancy between the literal expression and intended implication, known as the word sense disambiguation (WSD) problem (Chen et al., 2024). The accurate detection of sarcasm is crucial for various Natural Language Processing (NLP) applications, including sentiment analysis, where sarcasm can drastically skew results, as well as opinion mining and broader social media analysis.
 
@@ -64,16 +64,13 @@ We cleaned the pre-selected data by removing duplicate comments within the same 
 
 #### Linguistic Analysis
 
-We used TF-IDF vectorization and 1- and 2-grams to find characteristic expressions in the comments that were labeled sarcastic in comparison to the non-sarcastic comments. To calculate the sentiment incongruity of sarcastic and non-sarcastic comments, we obtained polarity scores by applying the Vader Sentiment Analyzer and multiplying the positive with the negative score for each comment. We calculated the emphatic punctuation density by normalizing the sum of punctuation characters ('!', '?', '""') in each comment by its word count.
+We used TF-IDF vectorization and 1- and 2-grams to find characteristic expressions in the comments that were labeled sarcastic in comparison to the non-sarcastic comments. To calculate the sentiment incongruity of sarcastic and non-sarcastic comments, we obtained polarity scores by applying the Vader Sentiment Analyzer and multiplied the positive with the negative score for each comment. We calculated the emphatic punctuation density by normalizing the sum of punctuation characters ('!', '?', '""') in each comment by its word count.
 
 #### Topic Modeling
 
 Before topic modeling, we filtered the dataset to include only the comments that were labeled as sarcastic. We reduced this dataframe to the "comment" column and removed stopwords from it. Then, we used BERTopic to perform the text embedding, dimensionality reduction (using UMAP) and clustering with HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise).
 
 ## Results and Discussion
-
-- Present the findings from your experiments, supported by visual or statistical evidence
-- Discuss how these results address your main research question.
 
 ### Model Performance 
 
@@ -98,13 +95,11 @@ The expression that were characteristic for the sarcastic compared to the non-sa
 
 We found lower rates of sentiment incongruity and emphatic punctuation in "r/explainlikeimfive" than in "r/worldnews" and in "r/WTF", aligning with our expectations about the sarcasm rates selecting these subreddits. 
 
-- plot: rates of sarcasm across subreddits
+![feature analysis](figures/feature_analysis.png)
 
 In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. These results indicate that the classification worked well enough to find expected differences in two main characteristics of sarcastic texts.
 
-![feature analysis](figures/feature_analysis.png)
-
-The results of the topic modeling are visualized on dashboard here: [Open the Topic Modeling Dashboard](plots/index.html) 
+The results of the topic modeling are visualized this dashboard: [Open the Topic Modeling Dashboard](plots/index.html) 
 
 ## Conclusion
 
