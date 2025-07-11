@@ -103,7 +103,7 @@ You can download and load the fine-tuned RoBERTa model from the Hugging Face Hub
 The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validation set, which demonstrates a robust capability in distinguishing between sarcastic and non-sarcastic Reddit comments. Compared to the logistic regression results, the fine-tuned model showed a 6% higher accuracy, while having balanced precision and recall scores. The balanced F1-scores across sarcastic and non-sarcastic comments (0.78 for both) suggest that the model performs consistently well for both classes, without a significant bias towards one class. Despite high performance, both models yield a non-negligible rate of misclassification. This implies a need for more context information like user- or conversation-specific details and potentially multi-modal information like images or other media that the comments are referring to.
 
 
-![tldr vs full comments](figures/sarc_rate_tldr.png)
+![tldr vs full comments](figures/sarcasm_rates.png)
 
 *Sarcasm Detection in Webis-TLDR-17*
 
