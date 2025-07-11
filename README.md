@@ -42,7 +42,7 @@ In preparation for the fine-tuning, we transformed the CSV file into a Pandas Da
 
 The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. We enabled Mixed-precision training (using 16-bit fp) to reduce memory consumption and speed up the training time. This was crucial for efficiently fine-tuning RoBERTa on the available computational resources. We added a weight decay parameter of 0.01 to reduce the likelihood of overfitting to noise in the training data. We specified a relatively small learning rate of 1e-5 which ensured that the pre-trained weights were adjusted incrementally to adapt to the sarcasm detection task. We found two epochs to be sufficient for convergence without significant overfitting on the validation set.
 
-As a benchmark for our fine-tuned model's performance, we used the evaluation metrics of a logistic regression model that was trained on the same data. This model was trained within the [Open Machine Learning Course](https://mlcourse.ai/book/index.html) by Yury Kashnitsky and can be found in [this Kaggle notebook](https://www.kaggle.com/code/kashnitsky/a4-demo-sarcasm-detection-with-logit).
+As a baseline for our fine-tuned model's performance, we used the evaluation metrics of a logistic regression model that was trained on the same data. This model was trained within the [Open Machine Learning Course](https://mlcourse.ai/book/index.html) by Yury Kashnitsky and can be found in [this Kaggle notebook](https://www.kaggle.com/code/kashnitsky/a4-demo-sarcasm-detection-with-logit).
 
 #### Preprocessing for Sarcasm Detection
 
@@ -111,15 +111,15 @@ As shown by the figure above, we found higher rates of sarcasm when we classifie
 
 The subreddit differences in sarcasm rates confirms that sarcasm is context-sensitive. 
 
-These were characteristic expressions for the sarcastic comments in the dataset:
-
-![wordcloud](figures/wordcloud_black.png)
-
 *Sentiment Incongruity and Emphatic Punctuation*
 
 ![feature analysis](figures/lingustic_features.png)
 
 In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. These results indicate that the classification worked well enough to find expected differences in two main characteristics of sarcastic texts.
+
+These were characteristic expressions for the sarcastic comments in the dataset:
+
+![wordcloud](figures/wordcloud_black.png)
 
 The results of the topic modeling are visualized on [this dashboard](plots/index.html).
 
