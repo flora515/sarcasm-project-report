@@ -113,7 +113,7 @@ In alignment with our expectations, "explainlikeimfive" showed a lower rate of s
 
 *Sentiment Incongruity and Emphatic Punctuation*
 
-![feature analysis](figures/lingustic_features.png)
+![feature analysis](figures/linguistic_features.png)
 
 In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. These results indicate that the classification worked well enough to find expected differences in two main characteristics of sarcastic texts.
 
