@@ -3,7 +3,7 @@
 Group members: *Emrecan Ulu*; *Flora Hirche*
 
 
-Sarcasm presents a challenging computational task, due to the inherent discrepancy between the literal expression and intended implication, known as the word sense disambiguation (WSD) problem (Chen et al., 2024). The accurate detection of sarcasm is crucial for various Natural Language Processing (NLP) applications, including sentiment analysis, where sarcasm can drastically skew results, as well as opinion mining and broader social media analysis.
+Sarcasm presents a challenging computational task, due to the inherent discrepancy between its literal expression and intended implication, known as the word sense disambiguation (WSD) problem (Chen et al., 2024). The accurate detection of sarcasm is crucial for various Natural Language Processing (NLP) applications, including sentiment analysis, where sarcasm can drastically skew results, as well as opinion mining and broader social media analysis.
 
 - granularity/context
 
@@ -24,7 +24,7 @@ conda create --name myenv python=3.10
 conda activate myenv
 ```
 
-Install CUDA-compatible Torch manually from [PyTorch Website](https://pytorch.org). Find related notebooks and requirements.txt in ["code" file](https://github.com/flora515/sarcasm-project-report/tree/main/code).
+Install CUDA-compatible Torch manually from [PyTorch Website](https://pytorch.org). Related notebooks and dependencies can be found in the [code directory](https://github.com/flora515/sarcasm-project-report/tree/main/code).
 
 ```bash
 pip install -r requirements.txt
