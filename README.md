@@ -7,6 +7,7 @@ Group members: Emrecan Ulu; Flora Hirche
 Differentiating between the literal and the intended meaning of a text remains a challenging task in Natural Language Processing. This so-called word sense disambiguation (WSD) problem (Chen et al., 2024) can affect the quality of sentiment analysis by concealing the actual attitudes and opinions of the author. **The goal of this project is to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm, and explore the topics that sarcastic comments focus on.**
 
 Website URL: https://flora515.github.io/sarcasm-project-report/index.html
+
 [Open the Topic Modeling Dashboard](plots/index.html)
 
 ## Dataset
