@@ -2,7 +2,6 @@
 
 Group members: *Emrecan Ulu*; *Flora Hirche*
 
-##
 
 Sarcasm presents a challenging computational task, due to the inherent discrepancy between the literal expression and intended implication, known as the word sense disambiguation (WSD) problem (Chen et al., 2024). The accurate detection of sarcasm is crucial for various Natural Language Processing (NLP) applications, including sentiment analysis, where sarcasm can drastically skew results, as well as opinion mining and broader social media analysis.
 
