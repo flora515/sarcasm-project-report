@@ -72,26 +72,24 @@ Before topic modeling, we filtered the dataset to include only the comments that
 
 ## Results and Discussion
 
-### Model Performance 
-
 - plot: metrics table
 ![roberta matrix](figures/roberta_matrix.png)
 
 The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validation set, which demonstrates a robust capability in distinguishing between sarcastic and non-sarcastic Reddit comments. A comparison with the linear regression results suggests that the fine-tuned model performed better, increasing the accuracy by about 5%, while maintaing a balance between precision and recall. Still, it produces a significant number of misclassifications. The balanced F1-scores across both classes (0.78 for both) suggest that the model performs consistently well for both sarcastic and non-sarcastic comments, without a significant bias towards one class.
 
-### Sarcasm Detection in Webis-TLDR-17
 
-First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. We found higher rates of sarcasm when we classified the TLDRs compared to when we classified the full comments.
 
 ![tldr vs full comments](figures/sarc_rates_tldr_full.png)
 
-After inspecting the results of both, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified 4,783 comments out of 72,619 comments (6.6%) as sarcastic.
+*Sarcasm Detection in Webis-TLDR-17*
 
-### Sarcasm Analysis
+As shown by the figure above, we found higher rates of sarcasm when we classified sarcasm in the TLDRs compared to when we classified the full comments. After inspecting and comparing the results, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified 4,783 comments out of 72,619 comments (6.6%) as sarcastic.
 
-The expression that were characteristic for the sarcastic compared to the non-sarcastic comments are visualized in the wordcloud below.
+These were characteristic expressions for the sarcastic comments in the dataset:
 
 ![wordcloud](figures/cloud_white.png)
+
+*Sentiment Incongruity and Emphatic Punctuation*
 
 We found lower rates of sentiment incongruity and emphatic punctuation in "r/explainlikeimfive" than in "r/worldnews" and in "r/WTF", aligning with our expectations about the sarcasm rates selecting these subreddits. 
 
@@ -99,7 +97,7 @@ We found lower rates of sentiment incongruity and emphatic punctuation in "r/exp
 
 In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. These results indicate that the classification worked well enough to find expected differences in two main characteristics of sarcastic texts.
 
-The results of the topic modeling are visualized this dashboard: [Open the Topic Modeling Dashboard](plots/index.html) 
+The results of the topic modeling are visualized on [this dashboard](plots/index.html).
 
 ## Conclusion
 
