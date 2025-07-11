@@ -27,7 +27,7 @@ conda create --name myenv python=3.10
 conda activate myenv
 ```
 
-Install CUDA-compatible Torch manually from [PyTorch Website](https://pytorch.org). Find related notebooks and requirements.txt in "code" file.
+Install CUDA-compatible Torch manually from [PyTorch Website](https://pytorch.org). Find related notebooks and requirements.txt in ["code" file](https://github.com/flora515/sarcasm-project-report/tree/main/code).
 
 ```bash
 pip install -r requirements.txt
