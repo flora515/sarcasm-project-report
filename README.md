@@ -1,24 +1,10 @@
-
-Use markdown files for your project report. [Here](https://docs.gitlab.com/ee/user/markdown.html) you can read about how to format Markdown documents. 
-
-4. **Start Writing:** Start writing your report by modifying the `README.md`. You can also add new Markdown files for additional pages by modifying the `_config.yml` file. Use the standard [GitHub Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) for formatting. 
-
-5. **Access Your Site:** Return to `Settings` -> `Pages` in your repository to find the URL to your live site. It typically takes a few minutes for GitHub Pages to build and publish your site after updates. The URL to access your live site follows this schema: `https://<<username>>.github.io/<<repository_name>>/`
-
-***
-
 # Beyond the Literal: Unmasking Sarcasm’s Signature on Reddit
 
 Group members: Emrecan Ulu; Flora Hirche
 
 ## Introduction
 
-- relevant studies or work that have tackled similar issues
-- main question or problem
-
-Differentiating between the literal and the intended meaning of a text remains a challenging task in Natural Language Processing. This so-called word sense disambiguation (WSD) problem (Chen et al., 2024) can affect the quality of sentiment analysis by concealing the real attitudes and opinions of the.
-..
-The goal of this project was to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm and explore the topics that the sarcastic comments focus on. 
+Differentiating between the literal and the intended meaning of a text remains a challenging task in Natural Language Processing. This so-called word sense disambiguation (WSD) problem (Chen et al., 2024) can affect the quality of sentiment analysis by concealing the real attitudes and opinions of the users. **The goal of this project is to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm, and explore the topics that sarcastic comments focus on.**
 
 ## Dataset
 
