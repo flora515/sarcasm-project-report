@@ -20,9 +20,7 @@ For fine-tuning a sarcasm detector, we used data that was gathered by Khodak et 
 
 We detected and analyzed sarcasm in the [Webis-TLDR-17 dataset](https://huggingface.co/datasets/webis/tldr-17). It contains 3,848,330 preprocessed Reddit posts, including their author, subreddit and self-annotated "too long; didn't read" (TLDR) summaries. The dataset was created using the authors' "tl;dr" annotations to obtain labels for automatic summarization training. A more detailed description can be found in [this paper](https://aclanthology.org/W17-4508.pdf) by Völske et al. (2017).
 
-## Methods
-
-We fine-tuned the RoBERTa model (for sequence classification) on sarcasm detection, using the labeled training dataset. In order to evaluate its performance, we compared the fine-tuned model to a linear regression model that was trained on the same data and on the same task. We applied TF-IDF vectorization to find the most characteristic expressions that were used in the sarcastic comments compared to the non-sarcastic ones. In our linguistic analysis, we determined the sentiment incongruity and punctuation density of sarcastic and non-sarcastic comments. Finally, we applied topic modeling to the comments labeled as sarcastic. 
+## Method
 
 ### Setup 
 
@@ -42,16 +40,15 @@ pip install -r requirements.txt
 - preprocessing: describe  data cleaning, normalization/transformation steps you applied to prepare the dataset, along with the reasons for choosing these methods
 - model training: explain the methodologies and algorithms you used, detail the parameter settings and training protocols, and describe measures taken to ensure the validity of the model
 
+We fine-tuned the RoBERTa model (for sequence classification) on sarcasm detection, using the labeled training dataset. In order to evaluate its performance, we compared the fine-tuned model to a linear regression model that was trained on the same data and on the same task. We applied TF-IDF vectorization to find the most characteristic expressions that were used in the sarcastic comments compared to the non-sarcastic ones. In our linguistic analysis, we determined the sentiment incongruity and punctuation density of sarcastic and non-sarcastic comments. Finally, we applied topic modeling to the comments labeled as sarcastic. 
+
 #### Preprocessing Labeled Sarcasm Data
 
 In preparation for the fine-tuning, we transformed the CSV file into a Pandas DataFrame and removed empty comments and unnecessary comlumns. We seperated 20% of the data for testing and split the remaining data into training and validation datasets (10% of the 80% were used for validation, the rest for training). Then, we transformed training, validation and test set into the HuggingFace dataset format and tokenized them using the Tokenizer from the pretrained RoBERTa model.
 
 #### Model Fine-Tuning
 
-The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. We enabled Mixed-precision training (using 16-bit fp) to reduce memory consumption and speed up the training time. This was crucial for efficiently fine-tuning RoBERTa on the available computational resources. We specified a relatively small learning rate of 1e-5 which ensured that the pre-trained weights were adjusted incrementally to adapt to the sarcasm detection task. We found two epochs to be sufficient for convergence without significant overfitting on the validation set.
-...
-- explain choice of parameters
-- measures to ensure validity of the model
+The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. We enabled Mixed-precision training (using 16-bit fp) to reduce memory consumption and speed up the training time. This was crucial for efficiently fine-tuning RoBERTa on the available computational resources. We added a weight decay parameter of 0.01 to reduce the likelihood of overfitting to noise in the training data. We specified a relatively small learning rate of 1e-5 which ensured that the pre-trained weights were adjusted incrementally to adapt to the sarcasm detection task. We found two epochs to be sufficient for convergence without significant overfitting on the validation set.
 
 As a benchmark for our fine-tuned model's performance, we used the evaluation metrics of a linear regression model that was trained on the same data. This model was trained within the [Open Machine Learning Course](https://mlcourse.ai/book/index.html) by Yury Kashnitsky and can be found in [this Kaggle notebook](https://www.kaggle.com/code/kashnitsky/a4-demo-sarcasm-detection-with-logit).
 
@@ -82,7 +79,6 @@ Before topic modeling, we filtered the dataset to include only the comments that
 
 - plot: metrics table
 ![roberta matrix](figures/roberta_matrix.png)
-![linear regression matrix](figures/linreg_small.png)
 
 The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validation set, which demonstrates a robust capability in distinguishing between sarcastic and non-sarcastic Reddit comments. A comparison with the linear regression results suggests that the fine-tuned model performed better, increasing the accuracy by about 5%, while maintaing a balance between precision and recall. Still, it produces a significant number of misclassifications. The balanced F1-scores across both classes (0.78 for both) suggest that the model performs consistently well for both sarcastic and non-sarcastic comments, without a significant bias towards one class.
 
