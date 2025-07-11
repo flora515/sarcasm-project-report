@@ -77,12 +77,12 @@ Before topic modeling, we filtered the dataset to include only the comments that
 ### Sarcasm Detection
 
 - plot: metrics table
-![confusion matrix](https://github.com/flora515/sarcasm-project-report/blob/main/figures/tuned_roberta_matrix.png)
+![figures/tuned_roberta_matrix.png)
 - plots: metrics & confusion matrix of lin reg for comparison
 
 The evaluation of the fine-tuned model suggests that it performs better than a simpler linear regression model, while maintaing a balance between precision and recall. Still, it produces a significant amount of misclassifiations. First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. As shown in figure xxx, we found a higher rate of sarcasm when we classified the TLDRs compared to when we classified the full comments.
 
-- plot: tldr vs full comments
+![tldr vs full comments](figures/sarc_rates_tldr_full.png)
 
 After inspecting the results of both, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified xxx comments as sarcastic and xxx as non-sarcastic.
 
@@ -90,7 +90,7 @@ After inspecting the results of both, we suspected an overclassification of sarc
 
 The expression that were characteristic for the sarcastic compared to the non-sarcastic comments are visualized in figure xxx.
 
-- plot: wordcloud
+![wordcloud]()
 
 We found a lower rate of sarcasm in "r/explainlikeimfive" than in "r/worldnews" and in "r/WTF", aligning with the expectations we stated when selecting these subreddits. 
 
@@ -98,7 +98,7 @@ We found a lower rate of sarcasm in "r/explainlikeimfive" than in "r/worldnews" 
 
 In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. These results indicate that the classification worked well enough to find expected differences in two main characteristics of sarcastic texts.
 
-- plot: barplot sentiment incongruity & punctuation density
+![feature analysis](figures/feature_analysis.png)
 
 The results of the topic modeling are visualized on [this dashboard]. 
 
