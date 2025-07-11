@@ -69,9 +69,9 @@ Before topic modeling, we filtered the dataset to include only the comments that
 <table style="border-collapse: collapse; font-family: sans-serif;">
   <thead>
     <tr style="background-color: #f0f0f0;">
-      <th colspan="4">Fine-tuned RoBERTa</th>
-      <th style="border-left: 5px solid black;"></th>
       <th colspan="4">Logistic Regression</th>
+      <th style="border-left: 5px solid black;"></th>
+      <th colspan="4">Fine-tuned RoBERTa</th>
     </tr>
     <tr>
       <th>Class</th><th>Precision</th><th>Recall</th><th>F1-Score</th>
@@ -81,19 +81,19 @@ Before topic modeling, we filtered the dataset to include only the comments that
   </thead>
   <tbody>
     <tr>
-      <td>Not Sarcastic</td><td>0.78</td><td>0.79</td><td>0.78</td>
-      <td style="border-left: 5px solid black;"></td>
       <td>Not Sarcastic</td><td>0.74</td><td>0.68</td><td>0.71</td>
+      <td style="border-left: 5px solid black;"></td>
+      <td>Not Sarcastic</td><td>0.78</td><td>0.79</td><td>0.78</td>
     </tr>
     <tr>
-      <td>Sarcastic</td><td>0.78</td><td>0.77</td><td>0.78</td>
-      <td style="border-left: 5px solid black;"></td>
       <td>Sarcastic</td><td>0.74</td><td>0.68</td><td>0.71</td>
+      <td style="border-left: 5px solid black;"></td>
+      <td>Sarcastic</td><td>0.78</td><td>0.77</td><td>0.78</td>
     </tr>
     <tr>
-      <td>Accuracy</td><td colspan="3">0.78</td>
-      <td style="border-left: 5px solid black;"></td>
       <td>Accuracy</td><td colspan="3">0.72</td>
+      <td style="border-left: 5px solid black;"></td>
+      <td>Accuracy</td><td colspan="3">0.78</td>
     </tr>
   </tbody>
 </table>
