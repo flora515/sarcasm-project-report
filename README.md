@@ -123,10 +123,7 @@ The results of the topic modeling are visualized on [this dashboard](plots/index
 
 ## Conclusion
 
-- Summarize the major outcomes of your project
-- reflect on the research findings
-- clearly state the conclusions you've drawn from the study.
-
+Our project successfully fine-tuned a RoBERTa-based model to detect sarcasm in Reddit posts, outperforming a traditional logistic regression approach. Through our linguistic and computational analysis, we identified key features of sarcastic language, such as sentiment incongruity and emphatic punctuation, that support the model’s predictions. Topic modeling revealed that sarcastic comments tend to concentrate around controversial, humorous, and emotionally charged themes. These results underscore the multifaceted nature of sarcasm and the importance of context-aware modeling in NLP tasks.
 
 
 ## Contributions
