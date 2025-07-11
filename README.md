@@ -6,6 +6,8 @@ Group members: Emrecan Ulu; Flora Hirche
 
 Differentiating between the literal and the intended meaning of a text remains a challenging task in Natural Language Processing. This so-called word sense disambiguation (WSD) problem (Chen et al., 2024) can affect the quality of sentiment analysis by concealing the actual attitudes and opinions of the author. **The goal of this project is to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm, and explore the topics that sarcastic comments focus on.**
 
+[Open the Topic Modeling Dashboard](index.html)
+
 ## Dataset
 
 For fine-tuning a sarcasm detector, we used data that was gathered by Khodak et al. (2017) for their paper ["A Large Self-Annotated Corpus for Sarcasm"](https://arxiv.org/abs/1704.05579). It contains a balanced number of labeled sarcastic and non-sarcastic comments, containing a total of 1,010,826 entries. The labels were retrieved from Reddit users annotating their sarcastic comments with "/s". The dataset, specifically the 'train-balanced-sarcasm.csv' file we worked with, can be accessed [here](https://www.kaggle.com/datasets/danofer/sarcasm/data) on Kaggle.
@@ -100,7 +102,7 @@ In the sarcastic comments, we found a higher mean sentiment incongruity score an
 
 ![feature analysis](figures/feature_analysis.png)
 
-The results of the topic modeling are visualized on [this dashboard]. 
+The results of the topic modeling are visualized on dashboard here: [Open the Topic Modeling Dashboard](index.html) 
 
 ## Conclusion
 

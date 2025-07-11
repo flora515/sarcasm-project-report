@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Topic Modeling Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .header-container {
+    background-color: #ffffff;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 2rem;
+  }
+  .header-container h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+  .header-container .subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  .header-container .description {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #666;
+    font-size: 1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 600px 925px 600px 1200px;
+    grid-template-areas:
+      "documents documents"
+      "hierarchy heatmap"
+      "hierarchy topics"
+      "barchart barchart";
+    gap: 24px;
+    padding: 0 24px 24px 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .plot-frame {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden; 
+  }
+  .documents { grid-area: documents; }
+  .hierarchy { grid-area: hierarchy; }
+  .heatmap {
+    grid-area: heatmap;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .topics { grid-area: topics; }
+  .barchart {
+    grid-area: barchart;
+    min-height: 1200px; 
+  }
+  .termrank { grid-area: termrank; }
+  .plot-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-container">
+  <h1>Topic Modeling Dashboard</h1>
+  <p class="subtitle">Explore Trends, Structures, and Semantic Similarities in Sarcasm</p>
+  <p class="description">
+    Through the visualizations below, you can analyze semantic relationships between documents, the hierarchical structure of topics, word distributions, and inter-topic similarities.
+  </p>
+</div>
+
+
+  <div class="grid">
+    <div class="plot-frame documents">
+      <iframe src="visualize_documents.html"></iframe>
+    </div>
+    <div class="plot-frame hierarchy">
+      <iframe src="visualize_hierarchy.html"></iframe>
+    </div>
+    <div class="plot-frame heatmap">
+      <iframe src="visualize_heatmap.html"></iframe>
+    </div>
+    <div class="plot-frame topics">
+      <iframe src="visualize_topics.html"></iframe>
+    </div>
+    <div class="plot-frame barchart">
+      <iframe src="visualize_barchart.html"></iframe>
+    </div>
+  </div>
+
+</body>
+</html>
