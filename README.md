@@ -4,13 +4,17 @@ Group members: Emrecan Ulu; Flora Hirche
 
 ## Introduction
 
-Differentiating between the literal and the intended meaning of a text remains a challenging task in Natural Language Processing. This so-called word sense disambiguation (WSD) problem (Chen et al., 2024) can affect the quality of sentiment analysis by concealing the actual attitudes and opinions of the author. **The goal of this project is to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm, and explore the topics that sarcastic comments focus on.**
+Sarcasm presents a challenging computational task, due to the inherent discrepancy between the literal expression and intended implication, known as the word sense disambiguation (WSD) problem (Chen et al., 2024). The accurate detection of sarcasm is crucial for various Natural Language Processing (NLP) applications, including sentiment analysis, where sarcasm can drastically skew results, as well as opinion mining and broader social media analysis.
+
+- granularity/context
+
+**The goal of this project is to automatically detect sarcasm in our Reddit dataset, identify typical characteristics of sarcasm, and explore the topics that sarcastic comments focus on.**
 
 [Open the Topic Modeling Dashboard](index.html)
 
 ## Dataset
 
-For fine-tuning a sarcasm detector, we used data that was gathered by Khodak et al. (2017) for their paper ["A Large Self-Annotated Corpus for Sarcasm"](https://arxiv.org/abs/1704.05579). It contains a balanced number of labeled sarcastic and non-sarcastic comments, containing a total of 1,010,826 entries. The labels were retrieved from Reddit users annotating their sarcastic comments with "/s". The dataset, specifically the 'train-balanced-sarcasm.csv' file we worked with, can be accessed [here](https://www.kaggle.com/datasets/danofer/sarcasm/data) on Kaggle.
+For fine-tuning a sarcasm detector, we used data that was gathered by Khodak et al. (2017) for their paper ["A Large Self-Annotated Corpus for Sarcasm"](https://arxiv.org/abs/1704.05579). It contains a balanced number of labeled sarcastic and non-sarcastic comments, containing a total of 1,010,826 entries. The labels were retrieved from Reddit users annotating their sarcastic comments with "\s". The dataset, specifically the 'train-balanced-sarcasm.csv' file we worked with, can be accessed [here](https://www.kaggle.com/datasets/danofer/sarcasm/data) on Kaggle.
 
 We detected and analyzed sarcasm in the [Webis-TLDR-17 dataset](https://huggingface.co/datasets/webis/tldr-17). It contains 3,848,330 preprocessed Reddit posts, including their author, subreddit and self-annotated "too long; didn't read" (TLDR) summaries. The dataset was created using the authors' "tl;dr" annotations to obtain labels for automatic summarization training. A more detailed description can be found in [this paper](https://aclanthology.org/W17-4508.pdf) by Völske et al. (2017).
 
@@ -46,7 +50,7 @@ In preparation for the fine-tuning, we transformed the CSV file into a Pandas Da
 
 #### Model Fine-Tuning
 
-The pretrained RoBERTa (for sequence classification) model served as our base model for fine-tuning it on sarcasm detection. In our training parameters, we specified a learning rate of 1e-5, 2 epochs
+The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. We enabled Mixed-precision training (using 16-bit fp) to reduce memory consumption and speed up the training time. This was crucial for efficiently fine-tuning RoBERTa on the available computational resources. We specified a relatively small learning rate of 1e-5 which ensured that the pre-trained weights were adjusted incrementally to adapt to the sarcasm detection task. We found two epochs to be sufficient for convergence without significant overfitting on the validation set.
 ...
 - explain choice of parameters
 - measures to ensure validity of the model
@@ -76,19 +80,23 @@ Before topic modeling, we filtered the dataset to include only the comments that
 - Present the findings from your experiments, supported by visual or statistical evidence
 - Discuss how these results address your main research question.
 
-### Sarcasm Detection
+### Model Performance 
 
 - plot: metrics table
 ![roberta matrix](figures/roberta_matrix.png)
 ![linear regression matrix](figures/linreg_small.png)
 
-The evaluation of the fine-tuned model suggests that it performs better than a simpler linear regression model, while maintaing a balance between precision and recall. Still, it produces a significant amount of misclassifiations. First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. As shown in figure xxx, we found a higher rate of sarcasm when we classified the TLDRs compared to when we classified the full comments.
+The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validation set, which demonstrates a robust capability in distinguishing between sarcastic and non-sarcastic Reddit comments. A comparison with the linear regression results suggests that the fine-tuned model performed better, increasing the accuracy by about 5%, while maintaing a balance between precision and recall. Still, it produces a significant number of misclassifications. The balanced F1-scores across both classes (0.78 for both) suggest that the model performs consistently well for both sarcastic and non-sarcastic comments, without a significant bias towards one class.
+
+### Sarcasm Detection in Webis-TLDR-17
+
+First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. As shown in figure xxx, we found a higher rate of sarcasm when we classified the TLDRs compared to when we classified the full comments.
 
 ![tldr vs full comments](figures/sarc_rates_tldr_full.png)
 
 After inspecting the results of both, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified xxx comments as sarcastic and xxx as non-sarcastic.
 
-### Analysis of Sarcasm in Webis-TLDR-17
+### Sarcasm Analysis
 
 The expression that were characteristic for the sarcastic compared to the non-sarcastic comments are visualized in figure xxx.
 
