@@ -77,7 +77,7 @@ Before topic modeling, we filtered the dataset to include only the comments that
 ### Sarcasm Detection
 
 - plot: metrics table
-- plot: confusion matrix
+![confusion matrix](https://github.com/flora515/sarcasm-project-report/blob/main/figures/tuned_roberta_matrix.png)
 - plots: metrics & confusion matrix of lin reg for comparison
 
 The evaluation of the fine-tuned model suggests that it performs better than a simpler linear regression model, while maintaing a balance between precision and recall. Still, it produces a significant amount of misclassifiations. First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. As shown in figure xxx, we found a higher rate of sarcasm when we classified the TLDRs compared to when we classified the full comments.
