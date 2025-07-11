@@ -78,7 +78,7 @@ Before topic modeling, we filtered the dataset to include only the comments that
 
 - plot: metrics table
 ![roberta matrix](figures/roberta_matrix.png)
-![linear regression matrix](figures/linreg_matrix.png)
+![linear regression matrix](figures/linreg_small.png)
 
 The evaluation of the fine-tuned model suggests that it performs better than a simpler linear regression model, while maintaing a balance between precision and recall. Still, it produces a significant amount of misclassifiations. First, we tested classifying both, the TLDRs and full posts in the Webis-TLDR-17 data. As shown in figure xxx, we found a higher rate of sarcasm when we classified the TLDRs compared to when we classified the full comments.
 
