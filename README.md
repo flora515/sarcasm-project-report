@@ -91,8 +91,6 @@ These were characteristic expressions for the sarcastic comments in the dataset:
 
 *Sentiment Incongruity and Emphatic Punctuation*
 
-We found lower rates of sentiment incongruity and emphatic punctuation in "r/explainlikeimfive" than in "r/worldnews" and in "r/WTF", aligning with our expectations about the sarcasm rates selecting these subreddits. 
-
 ![feature analysis](figures/feature_analysis.png)
 
 In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. These results indicate that the classification worked well enough to find expected differences in two main characteristics of sarcastic texts.
