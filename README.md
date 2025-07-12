@@ -105,15 +105,15 @@ The fine-tuned RoBERTa model achieved an overall accuracy of 78% on the validati
 
 *Sarcasm Detection in Webis-TLDR-17*
 
-As shown by the figure above, we found higher rates of sarcasm when we classified sarcasm in the TLDRs compared to when we classified the full comments. After inspecting and comparing the results, we suspected an overclassification of sarcasm in the TLDRs and decided to keep results for the full posts. The model classified 4,783 comments out of 72,619 comments (6.6%) as sarcastic.
+As shown by the figure above, we found higher rates of sarcasm when we classified sarcasm in the TLDRs compared to when we classified the full comments. After inspecting and comparing the results, we suspected an overclassification of sarcasm in the TLDRs due to missing context information and decided to work with the full comments. The model classified 4,783 comments out of the 72,619 comments (6.6%) as sarcastic. The differences in the detected sarcasm rate bewteen TLDRs and full posts confirm the context-dependency of sarcasm. They also imply that the text granularity should be carefully considered, as it affects the quality of sarcasm detection and subsequent analyses. 
 
-In alignment with our expectations, "explainlikeimfive" showed a lower rate of sarcasm than "WTF" and "worldnews". The differences in sarcasm rates across subreddits confirm that sarcasm is context-dependent.
+In alignment with our expectations, "explainlikeimfive" showed a lower rate of sarcasm than "WTF" and "worldnews". The differences in sarcasm rates across subreddits further confirm that sarcasm is context-dependent.
 
 *Sentiment Incongruity and Emphatic Punctuation*
 
 ![feature analysis](figures/linguistic_features.png)
 
-In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. Finding these expected differences in two main characteristics of sarcastic texts suggests that the sarcasm detection worked.
+In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. Finding these expected differences in two main characteristics of sarcastic texts suggests that the sarcasm detection worked. Furthermore, these findings improve the interpretability of the model's predictions and speak in favor of being more integrated in hybrid modeling approaches. 
 
 These were characteristic expressions for the sarcastic comments in the dataset:
 
@@ -123,7 +123,7 @@ The results of the topic modeling are visualized on [this dashboard](plots/index
 
 ## Conclusion
 
-Our project successfully fine-tuned a RoBERTa-based model to detect sarcasm in Reddit posts, outperforming a traditional logistic regression approach. Through our linguistic and computational analysis, we identified key features of sarcastic language, such as sentiment incongruity and emphatic punctuation, that support the model’s predictions. Topic modeling revealed that sarcastic comments tend to focus on controversial, humorous, and emotionally charged themes. These results underscore the multifaceted nature of sarcasm and the importance of context-aware modeling in NLP tasks.
+Our project successfully fine-tuned a RoBERTa-based model to detect sarcasm in Reddit posts, outperforming a traditional logistic regression approach. Through our linguistic and computational analysis, we identified key features of sarcastic language, such as sentiment incongruity and emphatic punctuation, that support the model’s predictions. Topic modeling revealed that sarcastic comments tend to focus on controversial, humorous, and emotionally charged themes. These results underscore the highly contextual, nuanced nature of sarcasm and the importance of context-aware modeling in NLP tasks.
 
 
 ## Contributions
