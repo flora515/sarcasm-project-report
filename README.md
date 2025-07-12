@@ -34,11 +34,11 @@ We fine-tuned the RoBERTa model (for sequence classification) on sarcasm detecti
 
 #### Preprocessing Labeled Sarcasm Data
 
-In preparation for the fine-tuning, we transformed the CSV file into a Pandas DataFrame and removed empty comments and unnecessary comlumns. We seperated 20% of the data for testing and split the remaining data into training and validation datasets (10% of the 80% were used for validation, the rest for training). Then, we transformed training, validation and test set into the HuggingFace dataset format and tokenized them using the Tokenizer from the pretrained RoBERTa model.
+In preparation for the fine-tuning, we transformed the CSV file into a Pandas DataFrame and removed empty comments and unnecessary comlumns. A total of 1,010,771 comments remained, 505,368 labeled as sarcastic and 505,403 labeled as non-sarcastic. We seperated 20% of the data for testing and split the remaining data into training and validation datasets (10% of the 80% were used for validation, the rest for training). Then, we transformed training, validation and test set into the HuggingFace dataset format and tokenized them using the Tokenizer from the pretrained RoBERTa model.
 
 #### Model Fine-Tuning
 
-The pretrained RoBERTa (for sequence classification) model served as our base model for the fine-tuning on sarcasm detection. We enabled Mixed-precision training (using 16-bit fp) to reduce memory consumption and speed up the training time. This was crucial for efficiently fine-tuning RoBERTa on the available computational resources. We added a weight decay parameter of 0.01 to reduce the likelihood of overfitting to noise in the training data. We specified a relatively small learning rate of 1e-5 which ensured that the pre-trained weights were adjusted incrementally to adapt to the sarcasm detection task. We found two epochs to be sufficient for convergence without significant overfitting on the validation set.
+The pretrained RoBERTa model (RobertaForSequenceClassification from the transformers library) served as our base model for the fine-tuning on sarcasm detection. We enabled Mixed-precision training (using 16-bit fp) to reduce memory consumption and speed up the training time. This was crucial for efficiently fine-tuning RoBERTa on our available computational resources. We added a weight decay parameter of 0.01 to reduce the likelihood of overfitting to noise in the training data. We specified a relatively small learning rate of 1e-5 which ensured that the pre-trained weights were adjusted incrementally to adapt to the sarcasm detection task rather slowly. We found two epochs to be sufficient for convergence without significant overfitting on the validation set.
 
 As a baseline for our fine-tuned model's performance, we used the evaluation metrics of a logistic regression model that was trained on the same data. This model was trained within the [Open Machine Learning Course](https://mlcourse.ai/book/index.html) by Yury Kashnitsky and can be found in [this Kaggle notebook](https://www.kaggle.com/code/kashnitsky/a4-demo-sarcasm-detection-with-logit).
 
@@ -50,11 +50,11 @@ To prepare the Webis-TLDR-17 dataset for detecting sarcasm, we transformed it in
 2. **political/debate-oriented** - We chose 'r/worldnews', in which we expected a high rate of sarcasm, to capture sarcasm on political and controversial topics.
 3. **informational/explanatory** - We chose 'r/explainlikeimfive' as a subreddit in which we expected a diverse range of topics and a lower rate of sarcasm compared to the other selected subreddits.
 
-We cleaned the pre-selected data by removing duplicate comments within the same subreddit, empty comments and columns that we wouldn't need in our analyses (body, normalized body). Then we transformed the cleaned dataframe into the HuggingFace format and tokenized it by applying the RoBERTa tokenizer.
+We cleaned the pre-selected data by removing duplicate comments within the same subreddit, empty comments and columns that we wouldn't need in our analyses (body, normalized body). Then we transformed the cleaned dataframe into the HuggingFace format and tokenized it by applying the RoBERTa tokenizer. After used the model to classify sarcasm, we added a new column for the predicted labels.
 
 #### Linguistic Analysis
 
-We used TF-IDF vectorization and 1- and 2-grams to find characteristic expressions in the comments that were labeled sarcastic in comparison to the non-sarcastic comments. To calculate the sentiment incongruity of sarcastic and non-sarcastic comments, we obtained polarity scores by applying the Vader Sentiment Analyzer and multiplied the positive with the negative score for each comment. We calculated the emphatic punctuation density by normalizing the sum of punctuation characters ('!', '?', '""') in each comment by its word count.
+We applied TF-IDF vectorization to the labeled comments to quantify which words and phrases are disproportionately used in sarcastic comments compared to non-sarcastic ones. We included uni- and bigrams to capture short common sarcastic phrases. We applied masks to the TF-IDF matrix to seperate the sarcastic and non-sarcastic subsets. Then, we calculated the distinctiveness scores by substracting the non-sarcastic mean from the sarcastic mean. We chose the top 100 terms with the highest distinctiveness scores,representing the most characteristic sarcastic expressions in the dataset, and visualized them in a wordcloud. To calculate the sentiment incongruity of sarcastic and non-sarcastic comments, we applied the Vader Sentiment Analyzer and multiplied the scores indicating the proportions of positive and negative sentiment in each comment. This allowed us to quantify the extent to which opposing sentiments were being expressed. We calculated the emphatic punctuation density by counting specific punctuation characters ('!', '?', '""') in each comment and normalizing their sum by the comment's word count.
 
 #### Topic Modeling
 
@@ -113,7 +113,7 @@ In alignment with our expectations, "explainlikeimfive" showed a lower rate of s
 
 ![feature analysis](figures/linguistic_features.png)
 
-In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. These results indicate that the classification worked well enough to find expected differences in two main characteristics of sarcastic texts.
+In the sarcastic comments, we found a higher mean sentiment incongruity score and a higher mean emphatic punctuation density compared to the non-sarcastic comments. Finding these expected differences in two main characteristics of sarcastic texts suggests that the sarcasm detection worked.
 
 These were characteristic expressions for the sarcastic comments in the dataset:
 
